@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Our wedding at August 14th, 2026, Friday">
+    <title>Yiyun and Jiamin</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/flag-icon-css/css/flag-icon.css">
+    <link rel="stylesheet" href="css/bulma-carousel.min.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script defer src="js/fontawesome/all.js"></script>
+    <script src="js/dom-i18n.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/rsvp.js"></script>
+    <script src="js/particles.min.js"></script>
+    <script src=js/particles-config.js></script>
+    <script src=js/scroll.js></script>
+    <script src=js/bulma-carousel.min.js></script>
+  </head>
+  <body>
+  <!-- first section -->
+  <section class="hero has-bg-img is-danger is-fullheight" style="background-image: url(images/hero-ring.jpg); background-position: center;">
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" style="pointer-events:none;">
+          <a class="flag-icon flag-icon-gb" style="width: 2.66em;"  onclick="i18n.changeLanguage('en');"></a>
+        </a>
+        <a class="navbar-item" style="pointer-events:none;">
+          <a class="flag-icon flag-icon-cn" style="width: 2.66em;"  onclick="i18n.changeLanguage('cn');"></a>
+        </a>
+      </div>
+    </nav>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title" data-translatable>
+          Yiyun &amp; Jiamin // 林依韵 &amp; 朱嘉珉
+        </h1>
+        <h2 class="subtitle" data-translatable>
+          tie the knot // 结婚啦
+        </h2>
+      </div>
+    </div>
+    <div class="hero-foot has-text-centered">
+      <a href="#rsvp" class="icon is-epic animated bounce" style="margin-bottom: 1rem;">
+        <i class="fas fa-angle-down"></i>
+      </a>
+    </div>
+  </section>
+  <!-- second section -->
+  <section class="hero is-primary is-fullheight" id="details" style="position: relative;">
+    <div id="particles" style="position: absolute; height:100%; width:100%;"></div>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title" data-translatable>
+          August 14th, 2026, Friday // 2026年8月14日，周五
+        </h1>
+        <div class="columns is-centered">
+          <div class="column is-5 is-4-desktop">
+            <br>
+            <span class="icon is-huge">
+              <i class="fas fa-clock"></i>
+            </span>
+            <br>
+            <br>
+            <h5 class="info" data-translatable>
+              <p>Apéro starts at 11:30<br>Lunch starts at 13:00<br>After party goes on all evening</p>
+              <p>欢迎小食 11:30 开始 <br>午餐 13:00 开始<br>狂欢一整天</p>
+            </h5>
+          </div>
+          <div class="column is-5 is-4-desktop">
+            <br>
+            <a href="https://maps.app.goo.gl/5HxHnkwKYCSbWRbc6" target="_blank" 
+               style="color: #fff; text-decoration: none; transition: all 0.3s ease; display: inline-block;"
+               onmouseover="this.style.transform='scale(1.1)'; this.style.color='#ffdd57'"
+               onmouseout="this.style.transform='scale(1)'; this.style.color='#fff'">
+              <span class="icon is-huge">
+                <i class="fas fa-map-marker-alt"></i>
+              </span>
+            </a>
+            <br>
+            <br>
+            <h5 class="info" data-translatable>
+              <p>Fischers Fritz<br>City of Zurich<br>Switzerland</p>
+              <p>Fischers Fritz<br>苏黎世市<br>瑞士</p>
+            </h5>
+          </div>
+        </div>
+        <br>
+        <div class="columns is-centered">
+          <h2 class="subtitle" style="font-weight:bold;" data-translatable>
+            <p>Save the D<i class="fas fa-heart pulse"></i>te!</p>
+            <p>留出日期<i class="fas fa-heart pulse"></i>!<p>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- thrid section -->
+  <section class="hero is-danger is-fullheight" style="position:relative;">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title" data-translatable>
+          From the Mountain to the Lake // 从高山到湖泊
+        </h1>
+        <div class="columns is-centered">
+          <div class="column is-5 is-4-desktop">
+            <br>
+            <span class="icon is-huge">
+              <i class="fas fa-water"></i>
+            </span>
+            <br><br>
+            <h2 class="subtitle" data-translatable>
+            Wednesday // 周三
+            </h2>
+            <h5 class="info" data-translatable>
+            Float down Limmat river through the heart of Zurich. A relaxing way to see the city from a unique perspective. Join us for this peaceful journey from mountain to lake. // 沿利马特河漂流穿过苏黎世市中心。以独特的视角轻松游览城市。加入我们从高山到湖泊的宁静之旅。
+            </h5>
+          </div>
+          <div class="column is-5 is-4-desktop">
+            <br>
+            <span class="icon is-huge">
+              <i class="fas fa-hiking"></i>
+            </span>
+            <br><br>
+            <h2 class="subtitle" data-translatable>
+            Thursday // 周四
+            </h2>
+            <h5 class="info" data-translatable>
+            Hiking and barbecue day! We'll explore the beautiful trails around Zurich and end the day with a delicious outdoor barbecue. Perfect preparation for the big day ahead. // 徒步烧烤日！我们将探索苏黎世周围美丽的小径，以美味的户外烧烤结束一天。为即将到来的大日子做完美准备。
+            </h5>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-5 is-4-desktop">
+            <br>
+            <span class="icon is-huge">
+              <i class="fas fa-heart heartbeat"></i>
+            </span>
+            <br><br>
+            <h2 class="subtitle" data-translatable>
+            Friday // 周五
+            </h2>
+            <h5 class="info" data-translatable>
+            The wedding day! Join us at Fischers Fritz in Zurich for our wedding starting at 11:00, followed by lunch and afternoon celebration. Let's make this day unforgettable! // 婚礼当天！加入我们在苏黎世的Fischers Fritz，11:00开始婚礼，然后午餐和下午庆祝。让这一天难忘吧！
+            </h5>
+          </div>
+          <div class="column is-5 is-4-desktop">
+            <br>
+            <span class="icon is-huge">
+              <i class="fas fa-fire"></i>
+            </span>
+            <br><br>
+            <h2 class="subtitle" data-translatable>
+            Saturday // 周六
+            </h2>
+            <h5 class="info" data-translatable>
+            National celebration in Liechtenstein! Experience the unique alpine traditions and watch the fireworks A perfect way to continue our mountain-to-lake journey. // 在列支敦士登的国庆庆典！体验这个迷人的阿尔卑斯独特文化，观看烟花。继续我们从高山到湖泊旅程的完美方式。
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- fourth section-->
+  <section class="hero is-warning is-fullheight" style="position: relative;">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title" data-translatable>
+          Accommodation Recommendations // 住宿推荐
+        </h1>
+        <br>
+        
+        <!-- Option 1: Fischers Fritz Camping -->
+        <div class="columns is-centered" style="margin-bottom: 2rem;">
+          <div class="column is-10 is-8-desktop">
+            <div class="box" style="background-color: rgba(255,255,255,0.9);">
+              <div class="columns">
+                <div class="column is-2">
+                  <span class="icon is-large" style="color: #23d160;">
+                    <i class="fas fa-campground fa-3x"></i>
+                  </span>
+                </div>
+                <div class="column is-10 has-text-left">
+                  <h3 class="title is-4" data-translatable>
+                    Option 1: Fischers Fritz Camping // 选择一：Fischers Fritz 露营地
+                  </h3>
+                  <p class="info" data-translatable style="color: #333; margin-bottom: 1rem;">
+                    <span>
+                      <strong>🏕️ Right at the wedding venue! We'll be staying here before and after the wedding. </strong> There are 13 glamping safari tents and enough normal tents spaces and RV spaces. We're working on providing tents and sleeping bags for guests who want the camping experience but don't want to travel with gear.
+                    </span>
+                    <span>
+                      <strong>🏕️ 就在婚礼现场！我们会在婚礼前后住在这里。</strong> 这里有 13 顶豪华野奢帐篷，以及充足的普通帐篷位和房车位。我们正准备为想体验露营但不想自带装备的朋友提供帐篷和睡袋。
+                    </span>
+                  </p>
+                  <div class="buttons" data-translatable>
+                    <span>
+                      <a href="https://maps.app.goo.gl/eEwnC9DKBGvnYoaj6" target="_blank" class="button is-small is-primary">
+                        <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <span>View Google Map</span>
+                      </a>
+                      <a href="https://www.fischers-fritz.ch/en/" target="_blank" class="button is-small is-link">
+                        <span class="icon"><i class="fas fa-external-link-alt"></i></span>
+                        <span>Official Website</span>
+                      </a>
+                    </span>
+                    <span>
+                      <a href="https://maps.app.goo.gl/eEwnC9DKBGvnYoaj6" target="_blank" class="button is-small is-primary">
+                        <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <span>查看谷歌地图</span>
+                      </a>
+                      <a href="https://www.fischers-fritz.ch/en/" target="_blank" class="button is-small is-link">
+                        <span class="icon"><i class="fas fa-external-link-alt"></i></span>
+                        <span>官方网站</span>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option 2: Youth Hostel -->
+        <div class="columns is-centered" style="margin-bottom: 2rem;">
+          <div class="column is-10 is-8-desktop">
+            <div class="box" style="background-color: rgba(255,255,255,0.9);">
+              <div class="columns">
+                <div class="column is-2">
+                  <span class="icon is-large" style="color: #3273dc;">
+                    <i class="fas fa-bed fa-3x"></i>
+                  </span>
+                </div>
+                <div class="column is-10 has-text-left">
+                  <h3 class="title is-4" data-translatable>
+                    Option 2: Zurich Youth Hostel // 选择二：苏黎世青年旅舍
+                  </h3>
+                  <p class="info" data-translatable style="color: #333; margin-bottom: 1rem;">
+                    <span>
+                      <strong>🏨 Convenient location!</strong> Just 2km (20 minutes walk or 5 minutes by Uber/Bolt) from the venue. Well connected to Zurich HB (main station). Multiple room types available: dormitory beds to private double rooms with ensuite bathrooms. Great budget-friendly option with modern facilities.
+                    </span>
+                    <span>
+                      <strong>🏨 位置便利！</strong>距离婚礼场地仅2公里（20分钟步行或5分钟 Uber/Bolt）。与苏黎世火车总站连接良好。多种房型可选：从宿舍床位到带独立卫浴的标准双人间。现代化设施的经济实惠选择。
+                    </span>
+                  </p>
+                  <div class="buttons" data-translatable>
+                    <span>
+                      <a href="https://maps.app.goo.gl/Epe7ZfyR7eT1jaHh9" target="_blank" class="button is-small is-primary">
+                        <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <span>View Google Map</span>
+                      </a>
+                      <a href="https://www.youthhostel.ch/de/hostels/jugendherberge-zuerich" target="_blank" class="button is-small is-link">
+                        <span class="icon"><i class="fas fa-external-link-alt"></i></span>
+                        <span>Official Website</span>
+                      </a>
+                    </span>
+                    <span>
+                      <a href="https://maps.app.goo.gl/Epe7ZfyR7eT1jaHh9" target="_blank" class="button is-small is-primary">
+                        <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <span>查看谷歌地图</span>
+                      </a>
+                      <a href="https://www.youthhostel.ch/de/hostels/jugendherberge-zuerich" target="_blank" class="button is-small is-link">
+                        <span class="icon"><i class="fas fa-external-link-alt"></i></span>
+                        <span>官方网站</span>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option 3: Zurich City Center -->
+        <div class="columns is-centered" style="margin-bottom: 2rem;">
+          <div class="column is-10 is-8-desktop">
+            <div class="box" style="background-color: rgba(255,255,255,0.9);">
+              <div class="columns">
+                <div class="column is-2">
+                  <span class="icon is-large" style="color: #ff3860;">
+                    <i class="fas fa-city fa-3x"></i>
+                  </span>
+                </div>
+                <div class="column is-10 has-text-left">
+                  <h3 class="title is-4" data-translatable>
+                    More options: Around Zurich HB // 选择三：苏黎世住火车站附近
+                  </h3>
+                  <p class="info" data-translatable style="color: #333; margin-bottom: 1rem;">
+                    <span>
+                      <strong>🏙️ Explore the city!</strong> Any hotel around Zurich HB (main station) is great choice, with convenient access to public transport and taxis. The wedding venue is only 5km from Zurich HB. 
+                    </span>
+                    <span>
+                      <strong>🏙️ 探索城市！</strong>苏黎世火车总站周围的任何酒店都是不错的选择，出行公交打车都方便。婚礼场地距离市中心仅5公里。
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Special Notes -->
+        <div class="columns is-centered">
+          <div class="column is-10 is-8-desktop">
+            <div class="notification is-info is-light">
+              <p class="info" data-translatable style="color: #333;">
+                <span>
+                  <strong>🏠 Stay with us in Zurich!</strong> If you are traveling to Switzerland in June, July, and early August, feel free to stay at our place in Zurich. Our house will be available during those months, and we'd love to have you as our guests! Even if you only have a vague idea about visiting during those months, please contact us - we're happy to discuss options and help plan your Swiss adventure.<br><br>
+                  For any other accommodation needs or questions, we can of course help you to book with the exact dates and number of guests.
+                </span>
+                <span>
+                  <strong>🏠 住在我们苏黎世的家!</strong> 如果您在6月、7月和8月初来瑞士旅行，欢迎住在我们苏黎世的家里。那几个月我们的房子会空出来，我们很乐意接待大家！即使您只是有个模糊的想法想在那几个月来访，也请联系我们——我们很乐意讨论各种选择，帮助规划您的瑞士之旅。<br><br>
+                  如果你有其他住宿需求或疑问，有了确切的人数和入住/离开日期，我们当然也可以帮你预订住宿。
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <span class="icon is-huge">
+          <i class="fas fa-home"></i>
+        </span>
+      </div>
+    </div>
+  </section>
+  <section class="hero has-carousel is-fullheight" style="position:relative;">
+    <div class="hero-carousel">
+      <div class='has-background is-active'>
+        <div class="item-bg-img" style="background-image: url(images/igloo.jpg);">
+          <div class="item-caption" data-translatable>we sleep in an igloo. // 我们在小冰洞里睡觉。</div>
+        </div>
+      </div>
+      <div class='has-background'>
+        <div class="item-bg-img" style="background-image: url(images/bluesky.jpg);">
+          <div class="item-caption" data-translatable>We did a lot of hike together in Switzerland. // 我们在瑞士一起爬山。</div>
+        </div>
+      </div>
+      <div class='has-background'>
+        <div class="item-bg-img" style="background-image: url(images/ocean.jpg);">
+          <div class="item-caption" data-translatable>Our first camping experience was in Hong Kong. // 在香港的海边第一次露营。</div>
+        </div>
+      </div>
+      <div class='has-background'>
+        <div class="item-bg-img" style="background-image: url(images/pig.jpg);">
+          <div class="item-caption" data-translatable>Our trip in Tibet, where we walked and hitchhiked everyday. // 在西藏我们每天徒步和搭车。</div>
+        </div>
+      </div>
+      <div class='has-background'>
+        <div class="item-bg-img" style="background-image: url(images/ring.jpg);">
+          <div class="item-caption" data-translatable>We got two rings! // 莫比乌斯环戒指！</div>
+        </div>
+      </div>
+      <div class='has-background'>
+        <div class="item-bg-img" style="background-image: url(images/wall.jpg);">
+          <div class="item-caption" data-translatable>We painted an entire wall. The best project ever. // 我们画了一整面墙。</div>
+        </div>
+      </div>
+      <div class='has-background'>
+        <div class="item-bg-img" style="background-image: url(images/pumpkin.jpg);">
+          <div class="item-caption" data-translatable>Pumpkin carving every year. // 刻南瓜是每年的保留节目。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- fifth section-->
+  <section class="hero is-success is-fullheight" style="position: relative;">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title" data-translatable>
+          Travel // 旅游
+        </h1>
+        <br>
+        
+        <!-- Visa Information Section -->
+        <div class="columns is-centered" style="margin-bottom: 3rem;">
+          <div class="column is-10 is-8-desktop">
+            <div class="box" style="background-color: rgba(255,255,255,0.9);">
+              <div class="columns">
+                <div class="column is-2">
+                  <span class="icon is-large" style="color: #3273dc;">
+                    <i class="fas fa-passport fa-3x"></i>
+                  </span>
+                </div>
+                <div class="column is-10 has-text-left">
+                  <h3 class="title is-4" data-translatable style="color: #2c3e50;">
+                    Visa Information for Switzerland // 瑞士签证信息
+                  </h3>
+                  <div class="content" data-translatable style="color: #333;">
+                    <span>
+                      <p><strong>🛂 Schengen Visa Requirements:</strong></p>
+                      <ul>
+                        <li><strong>Application Timeline:</strong> Schengen visa can be applied maximum <u>6 months before</u> the start of travel</li>
+                        <li><strong>For August 2026 wedding:</strong> Applications can start as early as <strong>February 2026</strong></li>
+                        <li><strong>Appointment Booking:</strong> You can book appointment slots around <strong>December 2025</strong></li>
+                        <li><strong>Processing Time:</strong> Usually takes 15-20 working days, plan accordingly</li>
+                      </ul>
+                      <p><strong>💡 Pro Tips:</strong></p>
+                      <ul>
+                        <li>Book your appointment as soon as possible once booking opens</li>
+                        <li>Consider using Taobao services for professional visa application assistance</li>
+                        <li>Prepare all documents in advance (passport, photos, travel insurance, etc.)</li>
+                      </ul>
+                    </span>
+                    <span>
+                      <p><strong>🛂 申根签证要求：</strong></p>
+                      <ul>
+                        <li><strong>申请时间：</strong>申根签证最多可在出行前<u>6个月</u>申请</li>
+                        <li><strong>2026年8月婚礼：</strong>最早可于<strong>2026年2月</strong>开始申请</li>
+                        <li><strong>预约时间：</strong>预约名额大约在<strong>2025年12月</strong>左右开放</li>
+                        <li><strong>处理时间：</strong>通常需要15-20个工作日，请提前规划</li>
+                      </ul>
+                      <p><strong>💡 小贴士：</strong></p>
+                      <ul>
+                        <li>预约开放后请尽快预约</li>
+                        <li>可以考虑使用淘宝的专业签证代办服务</li>
+                        <li>提前准备所有材料（护照、照片、旅行保险等）</li>
+                      </ul>
+                    </span>
+                  </div>
+                  <div class="buttons" data-translatable>
+                    <span>
+                      <a href="https://visa.vfsglobal.com/chn/zh/che" target="_blank" class="button is-primary">
+                        <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                        <span>Book Visa Appointment</span>
+                      </a>
+                    </span>
+                    <span>
+                      <a href="https://visa.vfsglobal.com/chn/zh/che" target="_blank" class="button is-primary">
+                        <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                        <span>预约签证申请</span>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coming Soon Section -->
+        <div class="columns is-centered">
+          <div class="column is-10 is-8-desktop">
+            <div class="notification is-info is-light">
+              <span class="icon">
+                <i class="fas fa-clock"></i>
+              </span>
+              <span class="info" data-translatable style="color: #333; margin-left: 0.5rem;">
+                <span>
+                  More information about flights, local transportation, and travel itineraries will be added soon. Feel free to contact us if you have specific travel questions!
+                </span>
+                <span>
+                  更多有关机票、当地交通、行程推荐的信息即将添加。如有具体旅行问题请随时联系我们！
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- sixth section-->
+  <section class="hero is-info is-fullheight" id="rsvp" style="position: relative;">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title" data-translatable>
+          Invitation // 邀请
+        </h1>
+        <br>
+        <div class="columns is-centered">
+          <div class="column is-8 is-6-desktop">
+            <p class="info" data-translatable style="margin-bottom:1rem">
+              <span>
+               The best day in our lives won't be the same without your blessing and witness. We sincerely invite you to our wedding. Thank you for your continued support and care and thank you for your blessings. 
+              <br><br> Please let us know by <strong>28th Feburary</strong>
+              whether you <u>will</u> or <u>will not</u> be able to join our celebration!
+              Either way, your reply will greatly help us with the wedding arrangement. Thank you!
+              </span>
+              <span>我们的幸福需要您的祝福与见证。诚意邀请您参加林依韵和朱嘉珉的婚礼。感谢您一直以来的支持与关爱，谢谢您的祝福。
+              <br><br>请在<strong>2月28日</strong>之前回复我们，您<u>能否</u>参加婚礼。无论能否参加，
+              您的回复都会对我们筹备婚礼有莫大的帮助。谢谢!
+              </span>
+            </p>
+            <form id="rsvp-form" class="rsvp-form" action="" method="POST">
+              <!--first row-->
+              <div class="columns is-centered">
+                <div class="column is-half">
+                  <div class="control has-icons-left">
+                    <div data-translatable>
+                      <input name="field_2" class="input" placeholder="Name">
+                      <input name="field_2" class="input" placeholder="姓名">
+                    </div>
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="column is-half">
+                  <div class="control has-icons-left">
+                    <div data-translatable>
+                      <input name="field_1" class="input" placeholder="Email">
+                      <input name="field_1" class="input" placeholder="邮箱">
+                    </div>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                      </span>
+                  </div>
+                </div>
+              </div>
+              <!-- second row-->
+              <div class="columns">
+                <div class="control column is-offset-0">
+                  <label class="radio">
+                    <input type="radio" name="field_3" value="go" onchange="displayQuestion(this.value)">
+                    <span class="info" style="color:#fff;" data-translatable>
+                      Will see you there! // 到时候见。
+                    </span>
+                  </label>
+                  <br>
+                  <label class="radio">
+                    <input type="radio" name="field_3" value="nogo" onchange="displayQuestion(this.value)">
+                    <span class="info" style="color:#fff;"  data-translatable>
+                      Raising a toast from afar! // 远远祝福。
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <!-- Plus-One Sections (Static) -->
+              <div id="plus-ones-section" style="display:none;">
+                <p class="info" data-translatable style="margin-bottom:1rem; margin-top:1rem;">
+                  Plus-One Information (Optional) // 同行人员信息（可选）
+                </p>
+                
+                <!-- Plus-One 1 -->
+                <div class="columns is-centered" style="margin-bottom:1rem;">
+                  <div class="column is-half">
+                    <div class="control has-icons-left">
+                      <div data-translatable>
+                        <input name="plus_one_1_name" class="input" placeholder="#1 Plus-One Name">
+                        <input name="plus_one_1_name" class="input" placeholder="#1 同行人员姓名">
+                      </div>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-user-plus"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="column is-half">
+                    <div class="control has-icons-left">
+                      <div data-translatable>
+                        <input name="plus_one_1_notes" class="input" placeholder="Notes (Allergies, Age, etc.)">
+                        <input name="plus_one_1_notes" class="input" placeholder="备注 (过敏、年龄等)">
+                      </div>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-sticky-note"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Plus-One 2 -->
+                <div class="columns is-centered" style="margin-bottom:1rem;">
+                  <div class="column is-half">
+                    <div class="control has-icons-left">
+                      <div data-translatable>
+                        <input name="plus_one_2_name" class="input" placeholder="#2 Plus-One Name">
+                        <input name="plus_one_2_name" class="input" placeholder="#2 同行人员姓名">
+                      </div>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-user-plus"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="column is-half">
+                    <div class="control has-icons-left">
+                      <div data-translatable>
+                        <input name="plus_one_2_notes" class="input" placeholder="Notes (Allergies, Age, etc.)">
+                        <input name="plus_one_2_notes" class="input" placeholder="备注 (过敏、年龄等)">
+                      </div>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-sticky-note"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Plus-One 3 -->
+                <div class="columns is-centered" style="margin-bottom:1rem;">
+                  <div class="column is-half">
+                    <div class="control has-icons-left">
+                      <div data-translatable>
+                        <input name="plus_one_3_name" class="input" placeholder="#3 Plus-One Name">
+                        <input name="plus_one_3_name" class="input" placeholder="#3 同行人员姓名">
+                      </div>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-user-plus"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="column is-half">
+                    <div class="control has-icons-left">
+                      <div data-translatable>
+                        <input name="plus_one_3_notes" class="input" placeholder="Notes (Allergies, Age, etc.)">
+                        <input name="plus_one_3_notes" class="input" placeholder="备注 (过敏、年龄等)">
+                      </div>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-sticky-note"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- last line -->
+              <p class="info" style="margin-bottom:1rem; margin-top:1rem;" data-translatable>
+                Wishes and Notes // 祝福与备注
+              </p>
+              <div style="margin-bottom:1rem;" data-translatable>
+                <textarea class="textarea" name="general_notes" 
+                    placeholder="Anything you want to write!"></textarea>
+                <textarea class="textarea" name="general_notes" 
+                    placeholder="请在这里畅所欲言"></textarea>
+              </div>
+              <!-- message box after submit-->
+              <article class="message" id="alert-wrapper">
+                <!--messages added by rsvp.js-->
+              </article>
+              <!-- button to submit-->
+              <button class="button heartbeathover is-large is-danger">
+                <span class="lang" data-translatable>Let Us Know // 回复</span>
+              </button>
+            </form>
+            <br>
+            <span class="icon is-huge">
+              <i class="fas fa-gem"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer" style="padding: 1rem 0rem 1rem">
+    <div class="content has-text-centered">
+      <i class="fas fa-envelope"></i> <a href:mailto:hello@yiyunjiamin.com>hello@yiyunjiamin.com</a>
+      <div data-translatable>
+        <span><a href="https://yiyunjiamin.com">yiyunjiamin.com</a> created by Jiamin with lots of <i class="fas fa-heart pulse"></i> for Yiyun</span>
+        <span><a href="https://yiyunjiamin.com">yiyunjiamin.com</a> 由朱嘉珉带着对林依韵的<i class="fas fa-heart pulse"></i> 打造</span>
+      </div>
+    </div>
+  </footer>
+  <!--TODO no idea why the script needs to at bottom-->
+  <script>
+    var i18n = window.domI18n({
+      languages: ['en', 'cn'],
+        defaultLanguage: 'cn'
+    });
+    if (navigator.language.substring(0, 2) == 'en' || navigator.language.substring(0, 2) == 'de') {
+      i18n.changeLanguage('en');
+    }
+
+    bulmaCarousel.attach('.hero-carousel', {
+      pagination: true,
+      navigationSwipe: true,
+      effect: 'translate',
+      infinite: true,
+      breakpoints: []
+    });
+  </script>
+  </body>
+</html>
