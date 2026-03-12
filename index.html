@@ -20,6 +20,118 @@
     <script src=js/particles-config.js></script>
     <script src=js/scroll.js></script>
     <script src=js/bulma-carousel.min.js></script>
+    <style>
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 8px;
+        padding: 8px;
+      }
+      @media (max-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 4px;
+          padding: 4px;
+        }
+      }
+      .gallery-item {
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 4px;
+        aspect-ratio: 1;
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.92);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .lightbox.is-active { display: flex; }
+      .lightbox img {
+        max-width: 90vw;
+        max-height: 80vh;
+        object-fit: contain;
+        border-radius: 4px;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 16px; right: 20px;
+        color: #fff;
+        font-size: 2rem;
+        cursor: pointer;
+        background: none;
+        border: none;
+      }
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #fff;
+        font-size: 2.5rem;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 20px;
+        z-index: 1001;
+      }
+      .lightbox-prev { left: 8px; }
+      .lightbox-next { right: 8px; }
+      .lightbox-download { margin-top: 16px; }
+      .upload-area {
+        border: 3px dashed rgba(255,255,255,0.4);
+        border-radius: 12px;
+        padding: 2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 2rem;
+      }
+      .upload-area:hover, .upload-area.dragover {
+        border-color: #ffdd57;
+        background: rgba(255,255,255,0.05);
+      }
+      .upload-area input[type="file"] { display: none; }
+      .upload-progress-container { display: none; margin-top: 1rem; }
+      .upload-progress-container.is-active { display: block; }
+      .upload-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 6px;
+        padding: 8px 12px;
+      }
+      .upload-item-name {
+        flex: 1;
+        font-size: 0.85rem;
+        color: #fff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px;
+      }
+      .upload-item progress { flex: 2; }
+      .upload-item-status {
+        font-size: 0.85rem;
+        color: #ffdd57;
+        min-width: 30px;
+      }
+    </style>
   </head>
   <body>
   <!-- first section -->
@@ -735,6 +847,109 @@
       </div>
     </div>
   </section>
+  <!-- gallery section -->
+  <section class="hero is-dark is-fullheight" id="gallery" style="min-height: 100vh;">
+    <div class="hero-body" style="align-items: flex-start; padding-top: 5rem;">
+      <div class="container">
+        <div class="has-text-centered" style="margin-bottom: 2rem;">
+          <h1 class="title" data-translatable>
+            Photo Gallery // 照片墙
+          </h1>
+          <p class="info" data-translatable>
+            <span>Share your moments from the celebration!</span>
+            <span>分享你在婚礼中的精彩瞬间！</span>
+          </p>
+        </div>
+        <!-- Password Gate -->
+        <div class="columns is-centered" id="upload-password-gate">
+          <div class="column is-6 is-4-desktop">
+            <div class="has-text-centered" style="padding: 2rem;">
+              <span class="icon is-large" style="color: rgba(255,255,255,0.5);">
+                <i class="fas fa-lock fa-2x"></i>
+              </span>
+              <br><br>
+              <p class="info" data-translatable style="color: #fff; margin-bottom: 1rem;">
+                <span>Enter password to upload</span>
+                <span>输入密码以上传</span>
+              </p>
+              <div class="field has-addons has-addons-centered">
+                <div class="control">
+                  <input class="input" type="password" id="upload-password" placeholder="Password / 密码">
+                </div>
+                <div class="control">
+                  <button class="button is-warning" onclick="checkUploadPassword()">
+                    <span class="icon"><i class="fas fa-unlock"></i></span>
+                  </button>
+                </div>
+              </div>
+              <p class="help" id="password-error" style="color: #ff3860; display:none;" data-translatable>
+                <span>Wrong password</span>
+                <span>密码错误</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Upload Area (hidden until password entered) -->
+        <div class="columns is-centered" id="upload-section" style="display:none;">
+          <div class="column is-8 is-6-desktop">
+            <div class="upload-area has-text-centered" id="upload-area">
+              <span class="icon is-large" style="color: #fff;">
+                <i class="fas fa-cloud-upload-alt fa-3x"></i>
+              </span>
+              <br><br>
+              <p class="info" data-translatable style="color: #fff;">
+                <span>Tap to select photos/videos or drag & drop here</span>
+                <span>点击选择照片/视频或拖拽到这里</span>
+              </p>
+              <p style="color: rgba(255,255,255,0.6); margin-top: 0.5rem;" data-translatable>
+                <span>Supports JPG, PNG, HEIC, MP4, MOV</span>
+                <span>支持 JPG、PNG、HEIC、MP4、MOV 格式</span>
+              </p>
+              <input type="file" id="file-input" accept="image/*,video/*" multiple>
+            </div>
+            <div class="upload-progress-container" id="upload-progress"></div>
+          </div>
+        </div>
+        <!-- Photo Grid -->
+        <div class="gallery-grid" id="gallery-grid"></div>
+        <!-- Empty State -->
+        <div class="has-text-centered" id="empty-state" style="display:none; padding: 4rem 2rem; color: rgba(255,255,255,0.6);">
+          <span class="icon" style="color: rgba(255,255,255,0.3);">
+            <i class="fas fa-images fa-3x"></i>
+          </span>
+          <br><br>
+          <p class="info" data-translatable>
+            <span>No photos yet. Be the first to share!</span>
+            <span>还没有照片，快来第一个分享吧！</span>
+          </p>
+        </div>
+        <!-- Loading -->
+        <div class="has-text-centered" id="loading-state" style="padding: 3rem;">
+          <span class="icon is-large" style="color: #fff;">
+            <i class="fas fa-spinner fa-spin fa-2x"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <img id="lightbox-img" src="" alt="">
+    <video id="lightbox-video" controls style="display:none; max-width:90vw; max-height:80vh; border-radius:4px;"></video>
+    <div class="lightbox-download">
+      <a id="lightbox-download-btn" class="button is-warning" href="" download>
+        <span class="icon"><i class="fas fa-download"></i></span>
+        <span data-translatable>Download Original // 下载原图</span>
+      </a>
+    </div>
+  </div>
   <footer class="footer" style="padding: 1rem 0rem 1rem">
     <div class="content has-text-centered">
       <i class="fas fa-envelope"></i> <a href:mailto:hello@yiyunjiamin.com>hello@yiyunjiamin.com</a>
@@ -761,6 +976,216 @@
       infinite: true,
       breakpoints: []
     });
+
+    // ============================================================
+    // Gallery
+    // ============================================================
+    var API_BASE = 'https://iynzkrxd3d.execute-api.eu-central-1.amazonaws.com/prod';
+    var UPLOAD_PASSWORD = 'yiyunjiamin2026';
+    var galleryPhotos = [];
+    var currentLightboxIndex = -1;
+
+    // Password gate
+    function checkUploadPassword() {
+      var input = document.getElementById('upload-password').value;
+      if (input === UPLOAD_PASSWORD) {
+        document.getElementById('upload-password-gate').style.display = 'none';
+        document.getElementById('upload-section').style.display = '';
+        localStorage.setItem('gallery_pw', input);
+      } else {
+        document.getElementById('password-error').style.display = 'block';
+      }
+    }
+    // Auto-unlock if password was saved
+    if (localStorage.getItem('gallery_pw') === UPLOAD_PASSWORD) {
+      document.getElementById('upload-password-gate').style.display = 'none';
+      document.getElementById('upload-section').style.display = '';
+    }
+    // Allow Enter key to submit password
+    document.getElementById('upload-password').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkUploadPassword();
+    });
+
+    var uploadArea = document.getElementById('upload-area');
+    var fileInput = document.getElementById('file-input');
+
+    uploadArea.addEventListener('click', function() { fileInput.click(); });
+    fileInput.addEventListener('change', function(e) {
+      if (e.target.files.length > 0) {
+        uploadFiles(e.target.files);
+        fileInput.value = '';
+      }
+    });
+    uploadArea.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+    uploadArea.addEventListener('dragleave', function() {
+      uploadArea.classList.remove('dragover');
+    });
+    uploadArea.addEventListener('drop', function(e) {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      if (e.dataTransfer.files.length > 0) uploadFiles(e.dataTransfer.files);
+    });
+
+    function uploadFiles(files) {
+      var progressContainer = document.getElementById('upload-progress');
+      progressContainer.classList.add('is-active');
+      var allowedTypes = ['image/jpeg', 'image/png', 'image/heic', 'image/heif', 'image/webp', 'video/mp4', 'video/quicktime', 'video/mov'];
+      Array.from(files).forEach(function(file) {
+        if (!allowedTypes.includes(file.type) && !file.name.match(/\.(jpg|jpeg|png|heic|heif|webp|mp4|mov)$/i)) return;
+        var itemEl = document.createElement('div');
+        itemEl.className = 'upload-item';
+        itemEl.innerHTML =
+          '<span class="upload-item-name">' + file.name + '</span>' +
+          '<progress class="progress is-small is-warning" value="0" max="100"></progress>' +
+          '<span class="upload-item-status">0%</span>';
+        progressContainer.appendChild(itemEl);
+        uploadSingleFile(file, itemEl.querySelector('progress'), itemEl.querySelector('.upload-item-status'));
+      });
+    }
+
+    function uploadSingleFile(file, progressBar, statusEl) {
+      if (!API_BASE) {
+        statusEl.textContent = 'API not set';
+        statusEl.style.color = '#ff3860';
+        return;
+      }
+      fetch(API_BASE + '/upload-url', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filename: file.name, content_type: file.type || 'image/jpeg' })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('PUT', data.upload_url);
+        xhr.setRequestHeader('Content-Type', file.type || 'image/jpeg');
+        xhr.upload.addEventListener('progress', function(e) {
+          if (e.lengthComputable) {
+            var pct = Math.round((e.loaded / e.total) * 100);
+            progressBar.value = pct;
+            statusEl.textContent = pct + '%';
+          }
+        });
+        xhr.addEventListener('load', function() {
+          if (xhr.status === 200) {
+            statusEl.textContent = '\u2713';
+            statusEl.style.color = '#23d160';
+            setTimeout(loadGalleryPhotos, 3000);
+          } else {
+            statusEl.textContent = 'Error';
+            statusEl.style.color = '#ff3860';
+          }
+        });
+        xhr.addEventListener('error', function() {
+          statusEl.textContent = 'Error';
+          statusEl.style.color = '#ff3860';
+        });
+        xhr.send(file);
+      })
+      .catch(function() {
+        statusEl.textContent = 'Error';
+        statusEl.style.color = '#ff3860';
+      });
+    }
+
+    function loadGalleryPhotos() {
+      if (!API_BASE) {
+        document.getElementById('loading-state').style.display = 'none';
+        document.getElementById('empty-state').style.display = 'block';
+        return;
+      }
+      fetch(API_BASE + '/photos')
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          galleryPhotos = data.photos || [];
+          renderGallery();
+        })
+        .catch(function() {
+          document.getElementById('loading-state').style.display = 'none';
+          document.getElementById('empty-state').style.display = 'block';
+        });
+    }
+
+    function renderGallery() {
+      var grid = document.getElementById('gallery-grid');
+      document.getElementById('loading-state').style.display = 'none';
+      grid.innerHTML = '';
+      if (galleryPhotos.length === 0) {
+        document.getElementById('empty-state').style.display = 'block';
+        return;
+      }
+      document.getElementById('empty-state').style.display = 'none';
+      galleryPhotos.forEach(function(photo, index) {
+        var item = document.createElement('div');
+        item.className = 'gallery-item';
+        if (photo.is_video) {
+          item.innerHTML = '<img src="' + photo.thumbnail_url + '" alt="" loading="lazy">' +
+            '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:2.5rem;text-shadow:0 0 10px rgba(0,0,0,0.7);pointer-events:none;">' +
+            '<i class="fas fa-play-circle"></i></div>';
+        } else {
+          item.innerHTML = '<img src="' + photo.thumbnail_url + '" alt="" loading="lazy">';
+        }
+        item.addEventListener('click', function() { openLightbox(index); });
+        grid.appendChild(item);
+      });
+    }
+
+    function openLightbox(index) {
+      currentLightboxIndex = index;
+      var photo = galleryPhotos[index];
+      var imgEl = document.getElementById('lightbox-img');
+      var vidEl = document.getElementById('lightbox-video');
+      if (photo.is_video) {
+        imgEl.style.display = 'none';
+        vidEl.style.display = 'block';
+        vidEl.src = photo.original_url;
+      } else {
+        vidEl.style.display = 'none';
+        vidEl.pause();
+        vidEl.src = '';
+        imgEl.style.display = 'block';
+        imgEl.src = photo.thumbnail_url;
+      }
+      document.getElementById('lightbox-download-btn').href = photo.original_url;
+      document.getElementById('lightbox').classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      var vidEl = document.getElementById('lightbox-video');
+      vidEl.pause();
+      vidEl.src = '';
+      document.getElementById('lightbox').classList.remove('is-active');
+      document.body.style.overflow = '';
+      currentLightboxIndex = -1;
+    }
+    function navLightbox(direction) {
+      var newIndex = currentLightboxIndex + direction;
+      if (newIndex < 0) newIndex = galleryPhotos.length - 1;
+      if (newIndex >= galleryPhotos.length) newIndex = 0;
+      openLightbox(newIndex);
+    }
+    document.addEventListener('keydown', function(e) {
+      if (!document.getElementById('lightbox').classList.contains('is-active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navLightbox(-1);
+      if (e.key === 'ArrowRight') navLightbox(1);
+    });
+    (function() {
+      var touchStartX = 0;
+      var lb = document.getElementById('lightbox');
+      lb.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      lb.addEventListener('touchend', function(e) {
+        var diff = e.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(diff) > 50) navLightbox(diff > 0 ? -1 : 1);
+      }, { passive: true });
+    })();
+
+    loadGalleryPhotos();
   </script>
   </body>
 </html>
