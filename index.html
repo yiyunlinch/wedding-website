@@ -1097,6 +1097,13 @@
             statusEl.textContent = '\u2713';
             statusEl.style.color = '#23d160';
             myUploads[uploadedKey] = Date.now();
+            // Fade out progress item after 2 seconds
+            var parentItem = statusEl.closest('.upload-item');
+            setTimeout(function() {
+              parentItem.style.transition = 'opacity 0.5s';
+              parentItem.style.opacity = '0';
+              setTimeout(function() { parentItem.remove(); }, 500);
+            }, 2000);
             setTimeout(loadGalleryPhotos, 3000);
           } else {
             statusEl.textContent = 'Error';
