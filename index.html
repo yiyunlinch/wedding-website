@@ -125,6 +125,26 @@
         text-overflow: ellipsis;
         max-width: 200px;
       }
+      .gallery-item .delete-btn {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        background: rgba(255,0,0,0.8);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+        cursor: pointer;
+        z-index: 2;
+        line-height: 28px;
+        text-align: center;
+        padding: 0;
+      }
+      .gallery-item .delete-btn:hover {
+        background: rgba(255,0,0,1);
+      }
       .upload-item progress { flex: 2; }
       .upload-item-status {
         font-size: 0.85rem;
@@ -984,6 +1004,7 @@
     var UPLOAD_PASSWORD = 'yiyunjiamin2026';
     var galleryPhotos = [];
     var currentLightboxIndex = -1;
+    var myUploads = {}; // key -> timestamp, track files uploaded in this session
 
     // Password gate
     function checkUploadPassword() {
@@ -1052,6 +1073,7 @@
         statusEl.style.color = '#ff3860';
         return;
       }
+      var uploadedKey = '';
       fetch(API_BASE + '/upload-url', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -1059,6 +1081,7 @@
       })
       .then(function(res) { return res.json(); })
       .then(function(data) {
+        uploadedKey = data.key;
         var xhr = new XMLHttpRequest();
         xhr.open('PUT', data.upload_url);
         xhr.setRequestHeader('Content-Type', file.type || 'image/jpeg');
@@ -1073,6 +1096,7 @@
           if (xhr.status === 200) {
             statusEl.textContent = '\u2713';
             statusEl.style.color = '#23d160';
+            myUploads[uploadedKey] = Date.now();
             setTimeout(loadGalleryPhotos, 3000);
           } else {
             statusEl.textContent = 'Error';
@@ -1121,15 +1145,33 @@
       galleryPhotos.forEach(function(photo, index) {
         var item = document.createElement('div');
         item.className = 'gallery-item';
+        var imgHtml = '<img src="' + photo.thumbnail_url + '" alt="" loading="lazy">';
         if (photo.is_video) {
-          item.innerHTML = '<img src="' + photo.thumbnail_url + '" alt="" loading="lazy">' +
-            '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:2.5rem;text-shadow:0 0 10px rgba(0,0,0,0.7);pointer-events:none;">' +
+          imgHtml += '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:2.5rem;text-shadow:0 0 10px rgba(0,0,0,0.7);pointer-events:none;">' +
             '<i class="fas fa-play-circle"></i></div>';
-        } else {
-          item.innerHTML = '<img src="' + photo.thumbnail_url + '" alt="" loading="lazy">';
         }
+        // Show delete button if uploaded in this session and within 5 minutes
+        var photoKey = 'originals/' + photo.filename;
+        if (myUploads[photoKey] && (Date.now() - myUploads[photoKey] < 5 * 60 * 1000)) {
+          imgHtml += '<button class="delete-btn" onclick="deletePhoto(\'' + photoKey + '\', event)">&times;</button>';
+        }
+        item.innerHTML = imgHtml;
         item.addEventListener('click', function() { openLightbox(index); });
         grid.appendChild(item);
+      });
+    }
+
+    function deletePhoto(key, event) {
+      event.stopPropagation();
+      fetch(API_BASE + '/photo', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key: key })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function() {
+        delete myUploads[key];
+        loadGalleryPhotos();
       });
     }
 

@@ -39,17 +39,15 @@ Live at: [yiyunjiamin.com](https://yiyunjiamin.com)
                               |
                  +------------+------------+
                  |                         |
-        POST /upload-url            GET /photos
-                 |                         |
-                 v                         v
-        +--------+--------+      +--------+--------+
-        | Lambda:          |      | Lambda:          |
-        | wedding-gallery  |      | wedding-gallery  |
-        | -api             |      | -api             |
-        +--------+---------+      +--------+---------+
-                 |                         |
-                 | Generate                | List objects
-                 | presigned URL           | + presigned URLs
+        POST /upload-url       GET /photos      DELETE /photo
+                 |                  |                  |
+                 v                  v                  v
+        +--------+------------------+------------------+
+        |           Lambda: wedding-gallery-api         |
+        +--------+------------------+------------------+
+                 |                  |                  |
+                 | Generate         | List objects     | Delete object
+                 | presigned URL    | + presigned URLs | + thumbnail
                  |                         |
                  v                         v
         +--------+-------------------------+--------+
@@ -147,6 +145,7 @@ wedding-website/
   - Videos: first frame extracted via ffmpeg
 - **Viewing**: grid layout with lightbox, swipe gestures on mobile
 - **Download**: original full-size file via presigned URL
+- **Deletion**: users can delete their own uploads within 5 minutes (session-based tracking, no login required)
 
 ## AWS Components
 
@@ -157,7 +156,7 @@ wedding-website/
 | Lambda | `wedding-gallery-thumbnail` | Auto-generate thumbnails on upload |
 | Lambda Layer | `pillow-layer` | Python Pillow for image processing |
 | Lambda Layer | `ffmpeg-layer` | ffmpeg binary for video frame extraction |
-| API Gateway | `wedding-gallery-api` | HTTP endpoints (GET /photos, POST /upload-url) |
+| API Gateway | `wedding-gallery-api` | HTTP endpoints (GET /photos, POST /upload-url, DELETE /photo) |
 | IAM Role | `wedding-gallery-lambda-role` | Lambda execution permissions (S3 + CloudWatch) |
 
 ## Cost
