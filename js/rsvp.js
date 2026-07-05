@@ -1,7 +1,7 @@
 // EmailJS Configuration
 const EMAIL_SERVICE_ID = 'service_rtnngv5';
 const EMAIL_TEMPLATE_ID = 'template_jdgj3xo'; // Organizer notification template
-const CONFIRMATION_TEMPLATE_ID = 'template_s66veh1'; // Guest confirmation template (you'll need to create this)
+const CONFIRMATION_TEMPLATE_ID = 'template_dnjk4jg'; // Guest confirmation template
 const EMAIL_PUBLIC_KEY = 'P5J4xu_1sV2U8ojt5';
 
 $(document).ready(function () {
