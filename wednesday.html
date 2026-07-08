@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Wednesday city day in Zurich, August 12th 2026">
+    <title>Wednesday City Day // Yiyun and Jiamin</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/flag-icon-css/css/flag-icon.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script defer src="js/fontawesome/all.js"></script>
+    <script src="js/dom-i18n.min.js"></script>
+  </head>
+  <body>
+  <section class="hero is-link is-fullheight" style="position: relative;">
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="index.html" style="color: #fff;">
+          <span class="icon"><i class="fas fa-arrow-left"></i></span>
+          <span data-translatable>
+            <span>Back</span>
+            <span>返回</span>
+          </span>
+        </a>
+        <a class="navbar-item" style="pointer-events:none;">
+          <a class="flag-icon flag-icon-gb" style="width: 2.66em;" onclick="i18n.changeLanguage('en');"></a>
+        </a>
+        <a class="navbar-item" style="pointer-events:none;">
+          <a class="flag-icon flag-icon-cn" style="width: 2.66em;" onclick="i18n.changeLanguage('cn');"></a>
+        </a>
+      </div>
+    </nav>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <span class="icon is-huge">
+          <i class="fas fa-landmark"></i>
+        </span>
+        <br><br>
+        <h1 class="title" data-translatable>
+          Wednesday, August 12 — City Day // 8月12日，周三 — 城市日
+        </h1>
+        <br>
+
+        <!-- Schedule -->
+        <div class="columns is-centered">
+          <div class="column is-10 is-8-desktop">
+            <div class="box" style="background-color: rgba(255,255,255,0.95);">
+              <div class="content has-text-left" data-translatable style="color: #333;">
+                <span>
+                  <p style="margin-bottom: 0.75rem;">🎨 <strong>Noon:</strong> Kunsthaus Zürich — the art museum is free every Wednesday!</p>
+                  <p style="margin-bottom: 0.75rem;">🎓 <strong>Afternoon:</strong> Visit ETH Zurich — Einstein's alma mater</p>
+                  <p style="margin-bottom: 0.75rem;">🌆 <strong>After dinner:</strong> Evening stroll through the old town</p>
+                </span>
+                <span>
+                  <p style="margin-bottom: 0.75rem;">🎨 <strong>中午：</strong>苏黎世美术馆——每周三免费！</p>
+                  <p style="margin-bottom: 0.75rem;">🎓 <strong>下午：</strong>参观苏黎世联邦理工学院——爱因斯坦母校</p>
+                  <p style="margin-bottom: 0.75rem;">🌆 <strong>晚饭后：</strong>老城区散步</p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meeting point -->
+        <div class="columns is-centered">
+          <div class="column is-10 is-8-desktop">
+            <div class="notification is-warning is-light">
+              <p class="info" data-translatable style="color: #333;">
+                <span>
+                  <strong>📍 Meeting point: Zurich HB (main station).</strong>
+                  Exact time is still TBD — we'll keep you posted!
+                </span>
+                <span>
+                  <strong>📍 集合地点：苏黎世火车总站（Zurich HB）。</strong>
+                  具体时间待定，我们会随时通知大家！
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <a href="index.html" class="button is-warning is-medium heartbeathover" data-translatable>
+          <span><i class="fas fa-arrow-left"></i>&nbsp; Back to Main Page</span>
+          <span><i class="fas fa-arrow-left"></i>&nbsp; 返回主页</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <script>
+    var i18n = window.domI18n({
+      languages: ['en', 'cn'],
+      defaultLanguage: 'cn'
+    });
+    if (navigator.language.substring(0, 2) == 'en' || navigator.language.substring(0, 2) == 'de') {
+      i18n.changeLanguage('en');
+    }
+  </script>
+  </body>
+</html>
