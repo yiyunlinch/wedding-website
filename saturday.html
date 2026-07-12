@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The big day at Strandbad Meilen, August 15th 2026">
+    <title>Saturday The Big Day // Yiyun and Jiamin</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/flag-icon-css/css/flag-icon.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script defer src="js/fontawesome/all.js"></script>
+    <script src="js/dom-i18n.min.js"></script>
+  </head>
+  <body>
+  <section class="hero is-danger is-fullheight" style="position: relative;">
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="index.html" style="color: #fff;">
+          <span class="icon"><i class="fas fa-arrow-left"></i></span>
+          <span data-translatable>
+            <span>Back</span>
+            <span>返回</span>
+          </span>
+        </a>
+        <a class="navbar-item" style="pointer-events:none;">
+          <a class="flag-icon flag-icon-gb" style="width: 2.66em;" onclick="i18n.changeLanguage('en');"></a>
+        </a>
+        <a class="navbar-item" style="pointer-events:none;">
+          <a class="flag-icon flag-icon-cn" style="width: 2.66em;" onclick="i18n.changeLanguage('cn');"></a>
+        </a>
+      </div>
+    </nav>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <span class="icon is-huge">
+          <i class="fas fa-heart heartbeat"></i>
+        </span>
+        <br><br>
+        <h1 class="title" data-translatable>
+          Saturday, August 15 — The Big Day // 8月15日，周六 — 重头戏
+        </h1>
+        <br>
+
+        <!-- Schedule -->
+        <div class="columns is-centered">
+          <div class="column is-10 is-8-desktop">
+            <div class="box" style="background-color: rgba(255,255,255,0.95);">
+              <div class="content has-text-left" data-translatable style="color: #333;">
+                <span>
+                  <p style="margin-bottom: 0.75rem;">🥂 <strong>11:00</strong> — Welcome drinks &amp; Ceremony</p>
+                  <p style="margin-bottom: 0.75rem;">🍽️ <strong>12:30</strong> — Lunch feast, Photos &amp; Games</p>
+                  <p style="margin-bottom: 0.75rem;">🎉 <strong>16:30</strong> — After party goes on</p>
+                </span>
+                <span>
+                  <p style="margin-bottom: 0.75rem;">🥂 <strong>11:00</strong> — 迎宾酒水 &amp; 仪式</p>
+                  <p style="margin-bottom: 0.75rem;">🍽️ <strong>12:30</strong> — 午宴、拍照 &amp; 跑跑跳跳</p>
+                  <p style="margin-bottom: 0.75rem;">🎉 <strong>16:30</strong> — 派对继续</p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Venue & Good to know -->
+        <div class="columns is-centered">
+          <div class="column is-10 is-8-desktop">
+            <div class="box" style="background-color: rgba(255,255,255,0.95);">
+              <div class="content has-text-left" data-translatable style="color: #333;">
+                <span>
+                  <p style="margin-bottom: 0.75rem;">📍 <strong>Venue:</strong> <a href="https://maps.app.goo.gl/jzDphTCWjcCMZhtB6" target="_blank">Strandbad Meilen</a>, Seestrasse 720, 8706 Meilen — a lido right on Lake Zurich.</p>
+                  <p style="margin-bottom: 0.75rem;">🏊 <strong>You can swim there!</strong> Bring your swimsuit if you fancy a dip in the lake.</p>
+                  <p style="margin-bottom: 0.75rem;">🚿 <strong>Changing rooms</strong> are available on site.</p>
+                </span>
+                <span>
+                  <p style="margin-bottom: 0.75rem;">📍 <strong>场地：</strong><a href="https://maps.app.goo.gl/jzDphTCWjcCMZhtB6" target="_blank">Strandbad Meilen</a>，Seestrasse 720, 8706 Meilen——苏黎世湖畔的湖滨浴场。</p>
+                  <p style="margin-bottom: 0.75rem;">🏊 <strong>可以游泳！</strong>想下湖玩水的话记得带泳衣。</p>
+                  <p style="margin-bottom: 0.75rem;">🚿 现场有<strong>更衣室</strong>。</p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- More info coming -->
+        <div class="columns is-centered">
+          <div class="column is-10 is-8-desktop">
+            <div class="notification is-warning is-light">
+              <p class="info" data-translatable style="color: #333;">
+                <span>
+                  <strong>📝 More information coming soon</strong> — dress code, ceremony details and more. Check back later!
+                </span>
+                <span>
+                  <strong>📝 更多信息即将添加</strong>——着装要求、仪式细节等，敬请期待！
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <a href="index.html" class="button is-warning is-medium heartbeathover" data-translatable>
+          <span><i class="fas fa-arrow-left"></i>&nbsp; Back to Main Page</span>
+          <span><i class="fas fa-arrow-left"></i>&nbsp; 返回主页</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <script>
+    var i18n = window.domI18n({
+      languages: ['en', 'cn'],
+      defaultLanguage: 'cn'
+    });
+    if (navigator.language.substring(0, 2) == 'en' || navigator.language.substring(0, 2) == 'de') {
+      i18n.changeLanguage('en');
+    }
+  </script>
+  </body>
+</html>
